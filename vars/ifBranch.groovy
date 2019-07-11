@@ -1,17 +1,17 @@
 #!/usr/bin/env groovy
 
 def equals(branch, Closure doTrue, Closure doFalse) {
-  if (script.env.BRANCH_NAME == "${branch}") {
-    doTrue(script)
+  if (env.BRANCH_NAME == "${branch}") {
+    doTrue()
   } else {
-    doFalse(script)
+    doFalse()
   }
 }
 
 def matches(branch, Closure doTrue, Closure doFalse) {
-  if (script.env.BRANCH_NAME =~ /${branch}/) {
-    doTrue(script)
+  if (env.BRANCH_NAME =~ /${branch}/) {
+    doTrue()
   } else {
-    doFalse(script)
+    doFalse()
   }
 }
