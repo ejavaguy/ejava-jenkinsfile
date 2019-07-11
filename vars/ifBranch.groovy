@@ -1,9 +1,9 @@
 #!/usr/bin/env groovy
 
-def call(script, branch, Closure doTrue, Closure doFalse) {
-  if (script.env.BRANCH_NAME =~ /${branch}/) {
-    doTrue(script)
+def call(branch, Closure doTrue, Closure doFalse) {
+  if (env.BRANCH_NAME =~ /${branch}/) {
+    doTrue()
   } else {
-    doFalse(script)
+    doFalse()
   }
 }
