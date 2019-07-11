@@ -2,6 +2,8 @@
 
 def call(Closure body) {
     container('maven') {
+      configFileProvider([configFile(fileId: env.SETTINGS_XML,
+			  variable: 'MAVEN_SETTINGS_XML')]) {
 	withCredentials([sshUserPrivateKey(credentialsId: 'webdev-publish-key',
 							   keyFileVariable: 'SSH_KEYS',
 							   passphraseVariable: 'SSH_PASS',
@@ -10,5 +12,6 @@ def call(Closure body) {
                 body()
 	    }
 	}
+      }
     }
 }
